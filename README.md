@@ -24,6 +24,17 @@ dependencies {
     ...
     /*image preview*/
     implementation 'com.greentoad.turtlebody.imagepreview:image-preview:$latestVersion'
+    
+    /*modified*/
+    implementation 'com.github.kishannareshpal:android-image-preview:1.1'
+    // don't forget to add the jitpack maven repo. if you use kishan's version. see:
+  
+    allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	} 
 }
 ```
 
@@ -43,7 +54,7 @@ imagePreview
     .setConfig(config)
     .setListener(new ImagePreview.ImagePreviewImpl.OnImagePreviewListener() {
         @Override
-        public void onDone(@NotNull ArrayList<Uri> data) {
+        public void onDone(@NotNull List<Uri> data) {
             //after done all uri is sent back
         }
 

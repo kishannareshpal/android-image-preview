@@ -371,6 +371,11 @@ class ImagePreview {
             }
         }
 
+        private fun show(beginAtPosition: Int) {
+            preview_fragment_recyclerview_horizontal.scrollToPosition(beginAtPosition)
+            show();
+        }
+
         private fun hide() {
             mUiVisibilityFlag = preview_fragment_parent_fl.systemUiVisibility
             preview_fragment_parent_fl.systemUiVisibility =
