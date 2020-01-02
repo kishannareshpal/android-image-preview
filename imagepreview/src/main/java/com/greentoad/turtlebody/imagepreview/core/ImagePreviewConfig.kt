@@ -18,7 +18,10 @@ class ImagePreviewConfig: Serializable {
     private set
 
     var isDoneButtonVisible: Boolean = false
+    private set
+
     var startingPosition: Int = 0
+    private set
 
     /**
      * @param value: false to hide add button, true to show add button
@@ -40,7 +43,7 @@ class ImagePreviewConfig: Serializable {
      * @param position: must be less than mUriList size.
      */
     fun setStartingPosition(position: Int): ImagePreviewConfig {
-        startingPosition = position;
+        startingPosition = position
         return this;
     }
 
