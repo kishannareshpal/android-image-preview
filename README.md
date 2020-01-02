@@ -1,5 +1,13 @@
 ![](https://thedroid.io/assets/img/tb-image-preview.png)
 
+### Modifications made by user @kishannareshpal:
+```
+    - Change from ArrayList<T> to simply List<T> of data.
+    – Added the ability to pre-select a starting position.
+    – Added the ability to hide the Done button.
+```
+
+
 ![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
 [ ![Download](https://api.bintray.com/packages/greentoad/android-image-preview/com.greentoad.turtlebody.imagepreview/images/download.svg?version=latest) ](https://bintray.com/greentoad/android-image-preview/com.greentoad.turtlebody.imagepreview/latest/link)
 
@@ -25,16 +33,15 @@ dependencies {
     /*image preview*/
     implementation 'com.greentoad.turtlebody.imagepreview:image-preview:$latestVersion'
     
-    /*modified*/
-    implementation 'com.github.kishannareshpal:android-image-preview:1.1'
+    /* For the modified version please use this instead */
+    implementation 'com.github.kishannareshpal:android-image-preview:1.1.2'
     // don't forget to add the jitpack maven repo. if you use kishan's version. see:
-  
     allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	} 
+	repositories {
+	   ...
+	   maven { url 'https://jitpack.io' }
+	}
+     } 
 }
 ```
 
