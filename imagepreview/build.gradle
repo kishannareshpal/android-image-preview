@@ -1,0 +1,106 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+    }
+}
+
+
+ext {
+    bintrayRepo = 'android-image-preview'
+    bintrayName = 'com.greentoad.turtlebody.imagepreview'
+
+    publishedGroupId = 'com.greentoad.turtlebody.imagepreview'
+    libraryName = 'Android Image Preview'
+    artifact = 'image-preview'
+
+    libraryDescription = 'Android Library for viewing images'
+
+    siteUrl = 'https://github.com/Turtlebody/android-image-preview'
+    gitUrl = 'https://github.com/Turtlebody/android-image-preview.git'
+
+    libraryVersionCode = 3
+    libraryVersion = '1.0.2'
+
+    developerId = 'greentoad'
+    developerName = 'Green Toad'
+    developerEmail = 'greentoad312@gmail.com'
+
+    licenseName = 'MIT License'
+    licenseUrl = 'https://github.com/Turtlebody/android-image-preview/blob/master/LICENSE'
+    allLicenses = ["MIT"]
+}
+
+android {
+    compileSdkVersion 29
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode libraryVersionCode
+        versionName libraryVersion
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation "androidx.core:core-ktx:1.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //Anko
+    implementation "org.jetbrains.anko:anko:0.10.8"
+
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //image
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+    //image viewer
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+apply from: 'https://raw.githubusercontent.com/sky-uk/gradle-maven-plugin/master/gradle-mavenizer.gradle'
+
