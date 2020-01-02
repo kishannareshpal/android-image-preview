@@ -443,11 +443,11 @@ class ImagePreview {
             // pre-select position to start on
             if (startAtPosition > data.size && startAtPosition < 0) {
                 // if an invalid position is selected.
-                // do nothin
+                // do nothing.
             } else {
-                // change the recycler adapter, and consequently the viewpager will also change
-                // because of the bounded listeners
+                // change the position
                 mAdapterRecycler.selectPosition(startAtPosition)
+                preview_fragment_viewpager.currentItem = startAtPosition
             }
         }
 
