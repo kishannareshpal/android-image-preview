@@ -34,15 +34,16 @@ dependencies {
     implementation 'com.greentoad.turtlebody.imagepreview:image-preview:$latestVersion'
     
     /* For the modified version please use this instead */
-    implementation 'com.github.kishannareshpal:android-image-preview:1.1.2'
-    // don't forget to add the jitpack maven repo. if you use kishan's version. see:
-    allprojects {
-	repositories {
-	   ...
-	   maven { url 'https://jitpack.io' }
-	}
-     } 
+    implementation 'com.github.kishannareshpal:android-image-preview:1.1.4'
 }
+
+// don't forget to add the jitpack maven repo on your project level build.gradle file. if you use the modified kishan's version. see:
+allprojects {
+    repositories {
+        ...
+	maven { url 'https://jitpack.io' }
+    }
+} 
 ```
 
 ## Usage
