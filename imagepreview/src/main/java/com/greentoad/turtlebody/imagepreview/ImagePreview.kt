@@ -393,8 +393,8 @@ class ImagePreview {
         private fun initAdapter(startAtPosition: Int = 0) {
             /*recycler view*/
             mAdapterRecycler = ImageAdapter()
-            mAdapterRecycler.setData(mPreviewConfig.mUriList)
-            mAdapterRecycler.selectPosition(startAtPosition)
+            val data: List<Uri> = mPreviewConfig.mUriList
+            mAdapterRecycler.setData(data)
             mAdapterRecycler.setListener(object : ImageAdapter.OnRecyclerImageClickListener {
                 override fun onRecyclerImageClick(index: Int) {
                     preview_fragment_viewpager.currentItem = index
@@ -438,6 +438,17 @@ class ImagePreview {
                     }
                 }
             })
+
+
+            // pre-select position to start on
+            if (startAtPosition > data.size && startAtPosition < 0) {
+                // if an invalid position is selected.
+                // do nothin
+            } else {
+                // change the recycler adapter, and consequently the viewpager will also change
+                // because of the bounded listeners
+                mAdapterRecycler.selectPosition(startAtPosition)
+            }
         }
 
 
