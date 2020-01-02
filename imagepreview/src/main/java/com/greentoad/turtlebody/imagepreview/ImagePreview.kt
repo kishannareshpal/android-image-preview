@@ -42,6 +42,8 @@ class ImagePreview {
         }
     }
 
+    private var startAtPosition: Int = 0
+
 
     class ImagePreviewImpl(activity: FragmentActivity) : PreviewFragment.OnPreviewFragmentListener {
 
@@ -239,8 +241,6 @@ class ImagePreview {
      *             Dialog  Fragment
      */
     class PreviewFragment : FragmentBase(){
-
-
         private lateinit var mAdapterPager: ViewPagerAdapter
         private lateinit var mAdapterRecycler: ImageAdapter
 //        private var mList: ArrayList<Uri> = arrayListOf()
@@ -303,7 +303,7 @@ class ImagePreview {
             }
 
             initButton()
-            initAdapter()
+            initAdapter(mPreviewConfig.startingPosition)
         }
 
         private fun initButton() {
@@ -371,11 +371,6 @@ class ImagePreview {
             }
         }
 
-        private fun show(beginAtPosition: Int) {
-            preview_fragment_recyclerview_horizontal.scrollToPosition(beginAtPosition)
-            show();
-        }
-
         private fun hide() {
             mUiVisibilityFlag = preview_fragment_parent_fl.systemUiVisibility
             preview_fragment_parent_fl.systemUiVisibility =
@@ -395,17 +390,17 @@ class ImagePreview {
             }
         }
 
-        private fun initAdapter() {
+        private fun initAdapter(startAtPosition: Int = 0) {
             /*recycler view*/
             mAdapterRecycler = ImageAdapter()
             mAdapterRecycler.setData(mPreviewConfig.mUriList)
+            mAdapterRecycler.selectPosition(startAtPosition)
             mAdapterRecycler.setListener(object : ImageAdapter.OnRecyclerImageClickListener {
                 override fun onRecyclerImageClick(index: Int) {
                     preview_fragment_viewpager.currentItem = index
                 }
             })
-            preview_fragment_recyclerview_horizontal.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            preview_fragment_recyclerview_horizontal.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             preview_fragment_recyclerview_horizontal.adapter = mAdapterRecycler
 
             /*view pager*/
